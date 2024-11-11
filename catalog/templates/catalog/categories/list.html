@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} دسته بندی ها {% endblock %}
+
+{% block content %}
+
+    <p class="m-3"><a class="mb-3" href="{% url 'catalog:cat_add' %}">افزودن دسته بندی جدید</a></p>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>عنوان</th>
+                <th>عملیات</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.title }}</td>
+                    <td><a href="{% url 'catalog:cat_edit' category.id %}" class="btn btn-warning btn-sm">ویرایش</a></td>
+                    <td>
+                        <form action="{% url 'catalog:cat_delete' category.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">حذف</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load jformat %}
+
+{% block title %}افزودن هدیه{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex justify-center">
+    <div class="p-5 my-3 bg-white shadow-gray-300 shadow-sm w-screen">
+      <p class="text-right text-sm sm:text-lg">برای انتشار هدیه جدید از فرم زیر استفاده کنید</p>
+      <form method="post" enctype="multipart/form-data" class=" grid grid-cols-1">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <div class="mb-3">
+                    {{ field.label }}
+                </div>
+
+                <div class="mb-3">
+                    {{ field }}
+                </div>
+                {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div class="row g-3">
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary">انتشار</button>
+            </div>
+            <div class="col-auto">
+              <a href="{% url 'gift:gift_list' %}" class="btn btn-outline-danger">انصراف</a>
+            </div>
+          </div>
+      </form>
+
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}
+

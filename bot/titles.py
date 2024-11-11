@@ -1,0 +1,8 @@
+ABOUT = 'معرفی محمد نجار کریمی'
+ABOUT_JAPANEES_MANAGEMENT = 'درباره مدیریت ژاپنی'
+RECIEVE_GIFT = 'دریافت هدیه'
+CATALOG = 'کاتالوگ محصولات'
+GET_PERSONAL_ASSISTANCE = 'دریافت مشاوره رایگان'
+OUR_CUSTOMERS = 'مشتریان ما'
+GET_PHONE_NUMBER_MESSAGE = 'لطفا شماره خود را ارسال کنید تا مشاورین ما در اسرع وقت با شما تماس بگیرند'
+BACK = 'بازگشت'

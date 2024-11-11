@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load jformat %}
+
+{% block title %}کاربران{% endblock %}
+
+{% block content %}
+
+  <h1 class="py-5 px-3 font-yekan text-right border-b border-gray-500">آخرین اعلان ها</h1>
+  {% for notif in notifications %}
+      <div class="flex justify-center py-3 gap-2 p-4 border-b border-gray-300">
+          <div class="flex-none basis-1/12 justify-items-center self-center">
+              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 21">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C15 15.4 15 16 14.462 16H1.538C1 16 1 15.4 1 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 8 3.464ZM4.54 16a3.48 3.48 0 0 0 6.92 0H4.54Z"/>
+              </svg>
+          </div>
+          <div class="font-yekan flex-none basis-1/3 justify-items-center self-center">
+              <p>{{ notif.created|jformat:"%B %Y %H:%M" }}</p>
+          </div>
+          <div class="grow font-yekan text-base font-thin">
+              <p>کاربر <a class="text-link" href="{% url 'bot:detail' notif.from_user.chat_id %}"> {{ notif.from_user.first_name }} </a> {{ notif.message }}</p>
+          </div>
+      </div>
+  {% endfor %}
+
+{% endblock %}

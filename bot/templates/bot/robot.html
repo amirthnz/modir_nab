@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load jformat %}
+
+{% block title %}ویرایش ربات{% endblock %}
+
+{% block content %}
+    <div class="min-h-screen flex justify-center">
+        <div class="p-5 my-3 bg-white shadow-gray-300 shadow-sm w-screen">
+        <p class="text-right text-sm sm:text-lg">برای بروزرسانی ربات از فرم زیر استفاده کنید</p>
+        <form method="post" enctype="multipart/form-data" class=" grid grid-cols-1">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.title }}
+            </div>
+            {{ form.token }}
+            <div class="mb-3">
+                <label class="mt-3 block text-sm font-medium text-gray-900 text-right" for="id_welcome_message">متن خوش آمدگویی ربات:</label>
+            </div>
+            <div class="mb-3">
+                {{ form.welcome_message }}
+            </div>
+
+            <div class="row">
+                <div class="col-lg-auto mb-3">
+
+                    {{ form.welcome_picture }}
+                </div>
+                <div class="col-lg-auto mb-3">
+                    {% if bot.welcome_picture %}
+                    <h5>تصویر فعلی</h5>
+                    <img class="p-2" height="100" src="{{ bot.welcome_picture.url }}" alt="welcome Image" />
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-auto">
+                    <input type="submit" class="btn btn-primary" name="update_bot" value="بروزرسانی">
+                </div>
+                <div class="col-auto">
+                  <a href="{% url 'dashboard' %}" class="btn btn-outline-danger">انصراف</a>
+                </div>
+            </div>
+
+
+
+        </form>
+        </div>
+    </div>
+
+
+{% endblock %}
+

@@ -1,0 +1,72 @@
+# Python
+*.py[cod]
+__pycache__/
+/__pycache__/
+*.pyo
+*.pyd
+
+# Django
+*.log
+*.sqlite3
+db.sqlite3
+/media
+/staticfiles
+/migrations/
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Local development environment
+.env
+.env.local
+.env.*.local
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Virtual environment
+.venv/
+venv/
+env/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Coverage reports
+.coverage
+.coverage.*
+htmlcov/
+
+# Pytest
+.cache
+pytest_cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# Other files
+*.DS_Store
+*.egg-info/
+*.egg

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %} افزودن محصول {% endblock %}
+
+{% block content %}
+
+    <form action="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="id_description">عنوان محصول</label>
+        </div>
+        <div class="mb-3">
+            {{ form.title }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_description">دسته بندی</label>
+        </div>
+        <div class="mb-3">
+            {{ form.category }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_description">توضیحات محصول</label>
+        </div>
+        <div class="mb-3">
+            {{ form.description }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_description">لینک محصول</label>
+        </div>
+        <div class="mb-3">
+            {{ form.link_to_website }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_description">تصویر محصول</label>
+        </div>
+        <div class="mb-3">
+            {{ form.photo }}
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col-auto">
+                <button class="btn btn-primary" type="submit">ذخیره</button>
+            </div>
+            <div class="col-auto">
+              <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-danger">انصراف</a>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}
