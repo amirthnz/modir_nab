@@ -2,15 +2,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 from catalog.models import Product, Category
 from catalog.forms import CategoryForm, ProductForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 
 # List categories
+@login_required
 def list_category(request):
     categories = Category.objects.all()
     return render(request, 'catalog/categories/list.html', {'categories': categories})
 
 
 # Add category using form
+@login_required
 def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -24,6 +27,7 @@ def add_category(request):
 
 
 # Edit category using form
+@login_required
 def edit_category(request, pk):
     category = get_object_or_404(Category, id=pk)
     if request.method == 'POST':
@@ -37,6 +41,7 @@ def edit_category(request, pk):
 
 
 # Delete category
+@login_required
 def delete_category(request, pk):
     category = get_object_or_404(Category, id=pk)
     category.delete()
@@ -44,6 +49,7 @@ def delete_category(request, pk):
 
 
 # list all products
+@login_required
 def list_product(request):
     product_list = Product.objects.all()
     # Pagination with 12 people per page
@@ -61,6 +67,7 @@ def list_product(request):
 
 
 # Add product using form
+@login_required
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -74,6 +81,7 @@ def add_product(request):
 
 
 # Edit product using form
+@login_required
 def edit_product(request, pk):
     product = get_object_or_404(Product, id=pk)
     if request.method == 'POST':
@@ -88,6 +96,7 @@ def edit_product(request, pk):
 
 
 # Delete product
+@login_required
 def delete_product(request, pk):
     product = get_object_or_404(Product, id=pk)
     product.delete()

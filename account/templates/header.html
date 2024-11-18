@@ -9,70 +9,71 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">داشبورد</a>
-            </li>
+            {% if request.user.is_authenticated %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">داشبورد</a>
+                    </li>
 
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'bot:add_bot' %}">اتصال ربات</a>
-            </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'bot:add_bot' %}">اتصال ربات</a>
+                    </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    کاربران
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'bot:list' %}">مدیریت کاربران</a></li>
-                    <li><a class="dropdown-item" href="{% url 'bot:broadcast' %}">ارسال پیام سراسری</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            کاربران
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'bot:list' %}">مدیریت کاربران</a></li>
+                            <li><a class="dropdown-item" href="{% url 'bot:broadcast' %}">ارسال پیام سراسری</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            صفحات
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'bot:posts' %}">مشاهده صفحات ربات</a></li>
+                            <li><a class="dropdown-item" href="{% url 'bot:add_post' %}">افزودن صفحه جدید</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            کاتالوگ محصولات
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'catalog:cat_list' %}">مدیریت دسته بندی ها</a></li>
+                            <li><a class="dropdown-item" href="{% url 'catalog:cat_add' %}">افزودن دسته بندی جدید</a></li>
+                            <li><a class="dropdown-item" href="{% url 'catalog:product_list' %}">مدیریت محصولات</a></li>
+                            <li><a class="dropdown-item" href="{% url 'catalog:product_add' %}">افزودن محصول جدید</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            هدایا
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'gift:gift_list' %}">مدیریت هدایا</a></li>
+                            <li><a class="dropdown-item" href="{% url 'gift:gift_add' %}">افزودن هدیه جدید</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
-            </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    صفحات
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'bot:posts' %}">مشاهده صفحات ربات</a></li>
-                    <li><a class="dropdown-item" href="{% url 'bot:add_post' %}">افزودن صفحه جدید</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    کاتالوگ محصولات
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'catalog:cat_list' %}">مدیریت دسته بندی ها</a></li>
-                    <li><a class="dropdown-item" href="{% url 'catalog:cat_add' %}">افزودن دسته بندی جدید</a></li>
-                    <li><a class="dropdown-item" href="{% url 'catalog:product_list' %}">مدیریت محصولات</a></li>
-                    <li><a class="dropdown-item" href="{% url 'catalog:product_add' %}">افزودن محصول جدید</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    هدایا
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'gift:gift_list' %}">مدیریت هدایا</a></li>
-                    <li><a class="dropdown-item" href="{% url 'gift:gift_add' %}">افزودن هدیه جدید</a></li>
-                </ul>
-            </li>
-
-        </ul>
-        {% if request.user.is_authenticated %}
-            <div class="d-flex">
-                <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-danger" type="submit">خروج</button>
-                </form>
-            </div>
-        {% else %}
-            <div class="d-flex">
-                <a class="btn btn-outline-success" href="{% url 'login' %}">ورود</a>
-            </div>
-        {% endif %}
+                <div class="d-flex">
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-danger" type="submit">خروج از حساب</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="d-flex">
+                    <a class="btn btn-outline-success" href="{% url 'login' %}">ورود</a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </nav>

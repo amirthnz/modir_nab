@@ -23,9 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+BASE_URL = 'https://f41f-86-57-28-46.ngrok-free.app'
+ALLOWED_HOSTS = ['https://f41f-86-57-28-46.ngrok-free.app', 'f41f-86-57-28-46.ngrok-free.app', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://f41f-86-57-28-46.ngrok-free.app', 'http://f41f-86-57-28-46.ngrok-free.app', "http://127.0.0.1"]
+CORS_ALLOWED_ORIGINS = [
+    'http://f41f-86-57-28-46.ngrok-free.app',
+    'https://f41f-86-57-28-46.ngrok-free.app',
+    'http://127.0.0.1',
+    # Add other trusted origins as needed
+]
 
 
 # Application definition
@@ -139,7 +147,6 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-BASE_URL = 'https://e345-206-189-13-110.ngrok-free.app'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

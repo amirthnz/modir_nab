@@ -38,7 +38,7 @@ class TelegramService:
             return response.json()
         except requests.exceptions.RequestException as e:
             # logger.error(f"Failed to call Telegram API: {e}")
-            raise Exception("Error calling Telegram API")
+            raise Exception(f"Error calling Telegram API: ==> {e.response}")
 
     def send_message_with_keyboard(self, chat_id, message, keyboard=None):
         payload = {

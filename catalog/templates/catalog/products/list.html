@@ -40,15 +40,48 @@
                     </td>
                     <td>{{ product.link_to_website }}</td>
                     <td>
-                        <form action="{% url 'catalog:product_delete' product.id %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm">حذف</button>
-                        </form>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="{{ product.id }}" data-bs-toggle="modal" data-bs-target="#deleteModal">حذف</button>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     {% include "pagination.html" with page=products %}
+
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">حذف محصول </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>آیا از حذف این دسته بندی اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                <form id="deleteForm" action="" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">حذف</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            const deleteForm = document.getElementById('deleteForm');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-id');
+                    deleteForm.action = "{% url 'catalog:product_delete' 'id' %}".replace('id', categoryId);
+                });
+            });
+        });
+    </script>
 
 {% endblock %}

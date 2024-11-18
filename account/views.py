@@ -1,11 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from account.forms import UserRegistrationForm, UserEditForm
+from account.forms import UserRegistrationForm, UserEditForm, CustomLoginForm
 from bot.models import Customer, Telebot
 from gift.models import GiftItem
 from jdatetime import datetime
 from django.db.models import Sum
+from django.contrib.auth.views import LoginView
+
+
+
+class CustomLoginView(LoginView):
+    authentication_form = CustomLoginForm
+    template_name = 'registration/login.html'
 
 
 def count_created_today():
@@ -21,6 +28,8 @@ def count_created_today():
 def get_total_download_count():
     total_downloads = GiftItem.objects.aggregate(total=Sum('download_count'))['total']
     return total_downloads if total_downloads is not None else 0
+
+
 
 
 
@@ -62,9 +71,8 @@ def register(request):
                 user_form.cleaned_data['password'])
             # Save the User object
             new_user.save()
-            return render(request,
-                          'account/register_done.html',
-                          {'new_user': new_user})
+            messages.success(request, 'کاربر جدید افزوده شد')
+            return redirect('dashboard')
     else:
         user_form = UserRegistrationForm()
     return render(request,
