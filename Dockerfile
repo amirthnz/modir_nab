@@ -35,4 +35,5 @@ WORKDIR /app
 EXPOSE 8000
 
 # run entrypoint.sh
+RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

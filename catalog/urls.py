@@ -12,5 +12,5 @@ urlpatterns = [
     path('products/', views.list_product, name='product_list'), # List products
     path('products/add/', views.add_product, name='product_add'), # Add product
     path('products/edit/<int:pk>/', views.edit_product, name='product_edit'), # Edit product
-    path('products/delete/<int:pk>/', views.delete_product, name='product_delete'), # Delete product
+    path('products/delete/<pk>/', views.delete_product, name='product_delete'), # Delete product
 ]

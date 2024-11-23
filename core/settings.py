@@ -25,13 +25,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-BASE_URL = 'https://f41f-86-57-28-46.ngrok-free.app'
-ALLOWED_HOSTS = ['https://f41f-86-57-28-46.ngrok-free.app', 'f41f-86-57-28-46.ngrok-free.app', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://f41f-86-57-28-46.ngrok-free.app', 'http://f41f-86-57-28-46.ngrok-free.app', "http://127.0.0.1"]
+BASE_URL = 'https://modirnaab.ir'
+ALLOWED_HOSTS = ['https://modirnaab.ir', 'modirnaab.ir', '109.204.224.228']
+CSRF_TRUSTED_ORIGINS = ['https://modirnaab.ir', 'http://modirnaab.ir', '109.204.224.228']
 CORS_ALLOWED_ORIGINS = [
-    'http://f41f-86-57-28-46.ngrok-free.app',
-    'https://f41f-86-57-28-46.ngrok-free.app',
-    'http://127.0.0.1',
+    'http://modirnaab.ir',
+    'https://modirnaab.ir',
+    'http://109.204.224.228',
     # Add other trusted origins as needed
 ]
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,8 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
+STATIC_ROOT = BASE_DIR / "static"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
