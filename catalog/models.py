@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name='دسته بندی')
-    title = models.CharField(max_length=255, verbose_name='عنوان')
+    title = models.CharField(max_length=30, verbose_name='عنوان')
     description = models.TextField(verbose_name='توضیحات')
     photo = models.ImageField(blank=True, null=True, verbose_name='عکس محصول')
     link_to_website = models.CharField(max_length=255, verbose_name='لینک محصول در وبسایت')

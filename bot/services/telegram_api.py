@@ -38,7 +38,7 @@ class TelegramService:
             return response.json()
         except requests.exceptions.RequestException as e:
             # logger.error(f"Failed to call Telegram API: {e}")
-            raise Exception(f"Error calling Telegram API: ==> {e.response}")
+            raise Exception(f"Error calling Telegram API: ==> {e.response.text}")
 
     def send_message_with_keyboard(self, chat_id, message, keyboard=None):
         payload = {
@@ -68,7 +68,7 @@ class TelegramService:
         for i in range(0, len(products), 2):
             row = []
             for product in products[i:i + 2]:
-                button = {'text': product.title, 'callback_data': product.title}
+                button = {'text': product.title[:30], 'callback_data': product.title}
                 row.append(button)
             keyboard['inline_keyboard'].append(row)
 
